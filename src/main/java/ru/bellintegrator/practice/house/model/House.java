@@ -1,6 +1,7 @@
 package ru.bellintegrator.practice.house.model;
 
 import ru.bellintegrator.practice.person.model.Person;
+import ru.bellintegrator.practice.soldier.model.Soldier;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,6 +38,8 @@ public class House {
     @ManyToMany(mappedBy = "houses")
     private Set<Person> persons;
 
+    private Set<Soldier> soldiers;
+
     public Long getId() {
         return id;
     }
@@ -58,5 +61,16 @@ public class House {
 
     public void setPersons(Set<Person> persons) {
         this.persons = persons;
+    }
+
+    public Set<Soldier> getSoldiers() {
+        if (soldiers == null) {
+            soldiers = new HashSet<>();
+        }
+        return soldiers;
+    }
+
+    public void setSoldiers(Set<Soldier> soldiers) {
+        this.soldiers = soldiers;
     }
 }
